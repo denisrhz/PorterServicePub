@@ -1,0 +1,40 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyc
+*$py.class
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+.pytest_cache/
+.coverage
+htmlcov/
+
+dist/
+build/
+*.egg-info/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# VSCode
+.vscode
+
+# C extensions
+*.so
+
+#Developer
+app.db
+microblog.log*
+
+Vagrantfile
+.vagrant
+ubuntu-xenial-*
