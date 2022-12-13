@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}">
+        <link rel="shortcut icon" href="{{ url_for('static', filename = 'favicon.ico') }}" type="image/png">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed&display=swap" rel="stylesheet"> 
+        <script src="https://kit.fontawesome.com/089660f746.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        {% if title %}
+        <title>{{ title }}</title>
+        {% else %}
+        <title>RoyalTrans</title>
+        {% endif %}
+    {% endblock head %}
+</head>
+<body>
+
+<header class="header" id="header">
+    <div class="contacts">
+        <div class="container">
+            <div class="contacts__inner">
+
+                <div class="contacts__item contacts__item--email">
+                    <i class="fas fa-envelope"></i>
+                    <div class="contacts__item__suptext">
+                        RoyalTrans@gmail.com
+                    </div>
+                    <div class="contacts__item__text">
+                        Отвечаем мгновенно
+                    </div>
+                </div>
+
+                <div class="contacts__item contacts__item--phone">
+                    <i class="fas fa-phone fa-flip-horizontal"></i>
+                    <div class="contacts__item__suptext">
+                        <a class="contacts__phone__link" href="tel:+79038994419">+372 1900 2201</a>
+                    </div>
+                    <div class="contacts__item__text">
+                        Консультация по телефону
+                    </div>
+                </div>
+
+                <div class="contacts__item--social">
+                        <a class="contacts__item--social" href="#" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+{% block content %}
+
+{% endblock %}
+
+<!-- Footer -->
+<footer class="footer" id="footer">
+    <div class="container">
+        <div class="footer__inner">
+            <div class="footer__col">
+                <h2 class="footer__logo">Роялтранс<span>.</span></h2>
+                <p class="footer__text">На протяжении 6 лет мы обслуживаем склады, производства, торговые сети, мероприятия и любые другие проекты.</p>
+            </div>
+
+            <div class="footer__col">
+                <h2 class="footer__title">Услуги</h2>
+                <ul class="service__list">
+                    {% for service in services %}
+                        <li><a href="{{ url_for('message', service=service.slug) }}"><i class="fa fa-check" aria-hidden="true"></i>{{ service.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        
+        
+            <div class="footer__col">
+                <h2 class="footer__title">Контакты</h2>
+                <div class="footer__contacts">
+                    <ul>
+                        <li class="footer__contacts__li">
+                            <i class="icon fa fa-phone"></i>
+                            <a class="footer__contacts__phone" href="tel:+79038994419">+7 (903) 899-44-19</a>
+                        </li>
+                        <li class="footer__contacts__li">
+                            <i class="icon fa fa-paper-plane"></i>
+                            RoyalTrans@gmail.com
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__col">
+                <h2 class="footer__title">Часы работы</h2>
+                <div class="footer__hours">
+                    <h4 class="footer__hours__title">Открыты для заказов:</h4>
+                    <p class="footer__hours__text">
+                        <span>Понедельник – Воскресенье : с 6 утра до 11 вечера</span>
+                    </p>
+                    <h4 class="footer__hours__title">Отвечаем на звонки:</h4>
+                    <p class="footer__hours__text">
+                        <span>В любое врямя</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            All Right Reserved. <br>
+            <span> © 2022 </span>Copyright
+        </div>
+
+    </div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.5/jquery.inputmask.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="{{ url_for('static', filename = 'app.js') }}"></script>
+
+</body>
+</html>

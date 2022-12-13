@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="menu" id="menu">
+    <div class="container">
+        <div class="menu__inner">
+            <div class="menu__logo">
+                <img class="logo__image" src="{{ url_for('static', filename = 'images/logo_68x50.png') }}" alt="" data-scroll="#about">
+                <h2 class="logo__title" data-scroll="#about">Royal<span>Trans</span></h2>
+            </div>
+            <nav class="nav" id="nav">
+                <a class="nav__link" id="nav__link" href="#" data-scroll="#about">О нас</a>
+                <a class="nav__link" id="nav__link" href="#" data-scroll="#service">Услуги</a>
+                <a class="nav__link" id="nav__link" href="#" data-scroll="#reviews">Отзывы</a>
+                <a class="nav__link" id="nav__link" href="#" data-scroll="#footer">Контакты</a>
+            </nav>
+
+            <button class="nav-toggle" id="nav_toggle" type="button">
+                <span class="nav-toggle__item">Menu</span>
+            </button>
+
+        </div>
+    </div>
+</div>
+
+<!-- About -->
+<section class="about" id="about">
+    <div class="about__left">
+        <div class="about__left__inner">
+            <div class="about__title">
+                <h2>Кто мы такие?</h2>
+                <h6>Наша компания предоставляет следующие услуги:</h6>
+            </div>
+            <ul class="service__list">
+                {% for service in services %}
+                    <li><a href="{{ url_for('message', service=service.slug) }}"><i class="fa fa-check" aria-hidden="true"></i>{{ service.title }}</a></li>
+                {% endfor %}
+            </ul>
+            <p>На протяжении 6 лет мы обслуживаем склады, производства, торговые сети, мероприятия и любые другие проекты, где требуется профессиональный подход. Каждый день к нам обращаются десятки клиентов за профессиональной помощью для решения своих проблем!</p>
+        </div>
+    </div>
+        <div class="about__right">
+            <img class="about__image" src="{{ url_for('static', filename = 'images/about.png') }}" alt="">
+        </div>
+</section>
+
+<!-- Statistics -->
+<div class="statistics">
+    <div class="container">
+        <div class="stat">
+            <div class="stat__item">
+                <div class="stat__text">Более</div>
+                <div class="stat__count">8</div>
+                <div class="stat__text">Лет на рынке</div>
+            </div>
+            <div class="stat__item">
+                <div class="stat__text">Уже</div>
+                <div class="stat__count">3427</div>
+                <div class="stat__text">Довольных клиентов</div>
+            </div>
+            <div class="stat__item">
+                <div class="stat__text">Более</div>
+                <div class="stat__count">400</div>
+                <div class="stat__text">Сотрудников</div>
+            </div>
+            <div class="stat__item">
+                <div class="stat__text">Работаем в</div>
+                <div class="stat__count">10</div>
+                <div class="stat__text">Городах</div>
+            </div>
+            <div class="stat__item">
+                <div class="stat__text">Обслуживаем</div>
+                <div class="stat__count">46</div>
+                <div class="stat__text">Крупных компаний</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Service -->
+<section class="section" id="service">
+    <div class="container">
+        <div class="section__header">
+            <h2 class="section__title">Услуги</h2>
+        </div>
+
+        <div class="service">
+        
+        {% for service in services %}
+            <div class="service__item">
+                <div class="service__header">
+
+                        
+                    <a href="{{ url_for('message', service=service.slug) }}">
+                        <img class="service__photo" src="{{ url_for('static', filename = 'images/service/{}'.format(service.image)) }}" alt="">
+                    </a>
+
+                    <div class="service__date">
+                        <div class="service__date__inner">
+                            <i>ОТ</i> {{ service.price }} <i class="fas fa-euro-sign"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="service__content">
+                    <span class="service-stat__item">
+                        {{ service.title }}
+                    </span>
+                    <div class="service__text">
+                        {{ service.description }}
+                    </div>
+                </div>
+                <div class="service__footer">
+                    <div class="service-stat">
+                        <div class="service__title">
+                            <a href="{{ url_for('message', service=service.slug) }}">Узнать стоимость</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Reviews -->
+<div class="section" id="reviews">
+    <div class="container">
+        <div class="section__header">
+            <h2 class="section__title">Отзывы</h2>
+        </div>
+        <div class="reviews">
+
+            <div data-slider>
+
+                <div>
+                    <div class="reviews__item">
+                        <img class="reviews__photo" src="{{ url_for('static', filename = 'images/reviews/1.jpg') }}" alt="">
+                        <div class="reviews__text">“Самые наилучшие впечатления от выполнения заказа! Очень нервничала насчет паковки, влезет-не влезет, не порвутся ли коробки. Все прошло отлично, четко по графику. Андрей с напарником все очень аккуратно и быстро погрузили. По цене все четко - как договорись, никаких доплат, как это часто бывает в грузоперевозках. Огромное спасибо!”</div>
+                        <div class="reviews__author">Марина В.</div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="reviews__item">
+                        <img class="reviews__photo" src="{{ url_for('static', filename = 'images/reviews/2.jpg') }}" alt="">
+                        <div class="reviews__text">“Быстро, четко и по делу. Грузоперевозка, по факту, получилась такая, какая она и должна быть в понимании нормального человека. И самое главное, что нету никакого развода, чем, к сожалению, очень часто грешат некоторые грузоперевозчики. Была поставлена конкретная задача, была объявлена конкретная цена, приехали нормальные ребята которые все четко, быстро, оперативно, и главное аккуратно все сделали.”</div>
+                        <div class="reviews__author">Дмитрий Е.</div>
+                    </div>
+                </div>
+
+
+                <div>
+                    <div class="reviews__item">
+                        <img class="reviews__photo" src="{{ url_for('static', filename = 'images/reviews/3.jpg') }}" alt="">
+                        <div class="reviews__text">“Переживала всю неделю перед переездом, переезжаю первый раз, звонила многим фирмам, но выбор поставила на "РоялТранс". Диспетчер очень грамотно меня обо всем расспросил, посоветовал какую машину выбрать, сколько грузчиков мне понадобится. Все очень вежливо. Переезд прошел незаметно и весело, Ребята грузчики меня подбадривали и все время между собой шутили. МОЛОДЦЫ! Мне очень понравилось, профессионалы.”</div>
+                        <div class="reviews__author">Кристина С.</div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="reviews__item">
+                        <img class="reviews__photo" src="{{ url_for('static', filename = 'images/reviews/4.jpg') }}" alt="">
+                        <div class="reviews__text">“Долго думали, обратиться в фирму или сэкономить и своими силами организовывать переезд с квартиры в частный дом. В итоге решили все таки обратиться к специалистам. И мы были в приятном шоке от их работы. Ни одного мата, ни одной выкуренной сигареты, ничего не испорчено, ничего не побито (имею горький опыт), в общем, всем советую!”</div>
+                        <div class="reviews__author">Григорий К.</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Message -->
+<div class="message">
+    <div class="container">
+        <div class="message__inner">
+            <h4 class="message__title">У вас появился вопрос или коммерческое предложение?</h4>
+            <a class="message__btn" href="{{ url_for('message', service='moving') }}">Написать</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
