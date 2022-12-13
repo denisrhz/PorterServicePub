@@ -32,7 +32,6 @@ venv.bak/
 *.so
 
 #Developer
-app.db
 microblog.log*
 
 Vagrantfile
